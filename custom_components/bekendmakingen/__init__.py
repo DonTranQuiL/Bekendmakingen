@@ -7,24 +7,29 @@ from .coordinator import BekendmakingenCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
+
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Bekendmakingen from a config entry."""
     _LOGGER.debug("Start setup Bekendmakingen voor: %s", entry.entry_id)
-    
+
     coordinator = BekendmakingenCoordinator(hass, entry)
-    
+
     # FIX: Laad de cache in de achtergrond (voorkomt de Event Loop / Blocking error)
-    coordinator.last_data = await hass.async_add_executor_job(coordinator.cache.load_cache)
-    
+    coordinator.last_data = await hass.async_add_executor_job(
+        coordinator.cache.load_cache
+    )
+
     # SMART BOOT: Als er cache is, start direct op. Zo niet, doe de zware download.
     if coordinator.last_data:
         _LOGGER.debug("Cache found! Loading instantly to speed up startup.")
         coordinator.data = coordinator.last_data
-        entry.async_create_background_task(hass, coordinator.async_request_refresh(), "bekendmakingen_bg_refresh")
+        entry.async_create_background_task(
+            hass, coordinator.async_request_refresh(), "bekendmakingen_bg_refresh"
+        )
     else:
         _LOGGER.debug("No cache found. Starting the heavy first download...")
         await coordinator.async_config_entry_first_refresh()
-    
+
     hass.data.setdefault(DOMAIN, {})[entry.entry_id] = coordinator
 
     async def handle_refresh(call: ServiceCall):
@@ -47,8 +52,10 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 
     return True
 
+
 async def update_listener(hass: HomeAssistant, entry: ConfigEntry):
     await hass.config_entries.async_reload(entry.entry_id)
+
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     unload_ok = await hass.config_entries.async_unload_platforms(entry, PLATFORMS)

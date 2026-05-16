@@ -1,9 +1,11 @@
 """Base entity for Planviewer."""
+
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN, MANUFACTURER, CONF_INSTANCE_NAME
 from .coordinator import PlanviewerDataUpdateCoordinator
+
 
 class PlanviewerBaseEntity(CoordinatorEntity[PlanviewerDataUpdateCoordinator]):
     """Base class for Planviewer entities."""

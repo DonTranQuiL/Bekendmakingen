@@ -4,13 +4,14 @@ import logging
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class BekendmakingenCache:
     def __init__(self, hass, municipality):
         self.cache_path = hass.config.path(f".bekendmakingen_{municipality}.json")
 
     def save_cache(self, data):
         try:
-            with open(self.cache_path, 'w') as f:
+            with open(self.cache_path, "w") as f:
                 json.dump(data, f)
         except Exception as e:
             _LOGGER.error("Error saving bekendmakingen cache: %s", e)
@@ -19,7 +20,7 @@ class BekendmakingenCache:
         if not os.path.exists(self.cache_path):
             return []
         try:
-            with open(self.cache_path, 'r') as f:
+            with open(self.cache_path, "r") as f:
                 return json.load(f)
         except Exception as e:
             _LOGGER.error("Error loading bekendmakingen cache: %s", e)

@@ -2,25 +2,37 @@ from homeassistant.components.sensor import SensorEntity, SensorDeviceClass
 from homeassistant.const import EntityCategory
 from .const import DOMAIN, MANUFACTURER
 
+
 async def async_setup_entry(hass, entry, async_add_entities):
     coordinator = hass.data[DOMAIN][entry.entry_id]
-    
+
     entities = [
         BekendmakingenSensor(coordinator, entry),
-        BekendmakingenDiagnosticSensor(coordinator, entry, "last_update_status", "Last Update Status"),
-        BekendmakingenDiagnosticSensor(coordinator, entry, "last_update_time", "Last Update Time", SensorDeviceClass.TIMESTAMP),
-        BekendmakingenDiagnosticSensor(coordinator, entry, "error_count", "Consecutive Errors"),
+        BekendmakingenDiagnosticSensor(
+            coordinator, entry, "last_update_status", "Last Update Status"
+        ),
+        BekendmakingenDiagnosticSensor(
+            coordinator,
+            entry,
+            "last_update_time",
+            "Last Update Time",
+            SensorDeviceClass.TIMESTAMP,
+        ),
+        BekendmakingenDiagnosticSensor(
+            coordinator, entry, "error_count", "Consecutive Errors"
+        ),
     ]
     async_add_entities(entities)
+
 
 class BekendmakingenSensor(SensorEntity):
     _attr_has_entity_name = True
 
     def __init__(self, coordinator, entry):
         self.coordinator = coordinator
-        self._attr_name = None # Main sensor takes the device name
+        self._attr_name = None  # Main sensor takes the device name
         self._attr_unique_id = f"{entry.entry_id}_latest_bekendmaking"
-        
+
         # BUNDLES THE SENSORS INTO ONE DEVICE
         self._attr_device_info = {
             "identifiers": {(DOMAIN, entry.entry_id)},
@@ -31,7 +43,11 @@ class BekendmakingenSensor(SensorEntity):
 
     @property
     def native_value(self):
-        return self.coordinator.data[0]["title"] if self.coordinator.data else "Geen bekendmakingen"
+        return (
+            self.coordinator.data[0]["title"]
+            if self.coordinator.data
+            else "Geen bekendmakingen"
+        )
 
     @property
     def extra_state_attributes(self):
@@ -43,8 +59,9 @@ class BekendmakingenSensor(SensorEntity):
             "time": latest["time"],
             "link": latest["link"],
             "summary": latest["summary"],
-            "history": self.coordinator.data[1:]
+            "history": self.coordinator.data[1:],
         }
+
 
 class BekendmakingenDiagnosticSensor(SensorEntity):
     _attr_has_entity_name = True
@@ -56,7 +73,7 @@ class BekendmakingenDiagnosticSensor(SensorEntity):
         self._attr_name = name
         self._attr_unique_id = f"{entry.entry_id}_diag_{key}"
         self._attr_device_class = device_class
-        
+
         # MUST MATCH THE MAIN SENSOR EXACTLY TO GROUP THEM
         self._attr_device_info = {
             "identifiers": {(DOMAIN, entry.entry_id)},
