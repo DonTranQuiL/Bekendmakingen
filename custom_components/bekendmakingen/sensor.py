@@ -35,7 +35,8 @@ class BekendmakingenSensor(SensorEntity):
 
     @property
     def extra_state_attributes(self):
-        if not self.coordinator.data: return {}
+        if not self.coordinator.data:
+            return {}
         latest = self.coordinator.data[0]
         return {
             "date": latest["date"],
