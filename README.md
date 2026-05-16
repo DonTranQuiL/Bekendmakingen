@@ -1,7 +1,11 @@
-# Gemeente Bekendmakingen Integration for Home Assistant
+notepa# Gemeente Bekendmakingen Integration for Home Assistant
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge)][hacs]
-[![Project Maintenance][maintenance_badge]](https://github.com/Malosaaa/ha-p2000)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://hacs.xyz/)
+[![Maintained](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/DonTranQuiL/bekendmakingen/commits/main)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2024.5+-blue.svg)](https://www.home-assistant.io/)
+[![Code Checker](https://github.com/DonTranQuiL/bekendmakingen/actions/workflows/codechecker.yml/badge.svg)](https://github.com/DonTranQuiL/bekendmakingen/actions)
+[![HACS Validation](https://github.com/DonTranQuiL/bekendmakingen/actions/workflows/hacs.yaml/badge.svg)](https://github.com/DonTranQuiL/bekendmakingen/actions)
+[![GitHub Release](https://img.shields.io/github/v/release/DonTranQuiL/bekendmakingen?style=flat-square)](https://github.com/DonTranQuiL/bekendmakingen/releases)
 
 This custom component for Home Assistant allows you to monitor local government announcements, permits, and decisions for any Dutch municipality. It pulls data directly from the official [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/) RSS feed, keeping you informed about what is happening in your neighborhood.
 
