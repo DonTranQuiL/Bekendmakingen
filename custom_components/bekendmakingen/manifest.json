@@ -1,10 +1,19 @@
 {
   "domain": "bekendmakingen",
   "name": "Bekendmakingen",
+  "after_dependencies": [],
+  "codeowners": [
+    "@malosaaa"
+  ],
   "config_flow": true,
+  "dependencies": [],
   "documentation": "https://github.com/Malosaaa/ha-bekendmakingen",
-  "requirements": ["feedparser==6.0.11"],
+  "integration_type": "service",
   "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/Malosaaa/ha-bekendmakingen/issues",
+  "quality_scale": "bronze",
+  "requirements": [
+    "feedparser==6.0.11"
+  ],
   "version": "1.1.1"
-
 }
