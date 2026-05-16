@@ -7,10 +7,10 @@
   ],
   "config_flow": true,
   "dependencies": [],
-  "documentation": "https://github.com/Malosaaa/ha-bekendmakingen",
+  "documentation": "https://github.com/Malosaaa/bekendmakingen",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Malosaaa/ha-bekendmakingen/issues",
+  "issue_tracker": "https://github.com/Malosaaa/bekendmakingen/issues",
   "quality_scale": "bronze",
   "requirements": [
     "feedparser==6.0.11"
