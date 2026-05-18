@@ -1,4 +1,4 @@
-notepa# Gemeente Bekendmakingen Integration for Home Assistant
+# Gemeente Bekendmakingen Integration for Home Assistant
 
 <p align="center">
   <!-- Release / License -->
