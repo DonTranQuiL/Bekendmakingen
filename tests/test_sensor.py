@@ -5,7 +5,6 @@ import pytest
 from homeassistant.core import HomeAssistant
 
 from custom_components.bekendmakingen.const import (
-    DOMAIN,
     CONF_MUNICIPALITY,
 )
 from custom_components.bekendmakingen.sensor import (
@@ -22,7 +21,7 @@ def mock_coordinator():
     config_entry = MagicMock()
     config_entry.entry_id = "mock_entry_id_123"
     config_entry.data = {CONF_MUNICIPALITY: "Kerkrade"}
-    
+
     coordinator.config_entry = config_entry
     coordinator.last_update_success_timestamp = "2026-05-18T15:30:00+00:00"
     coordinator.error_count = 0
@@ -42,7 +41,7 @@ def mock_coordinator():
             "time": "10:00",
             "link": "https://zoek.officielebekendmakingen.nl/rss?q=Kerkrade",
             "summary": "Kapvergunning verleend voor een kastanjeboom.",
-        }
+        },
     ]
 
     return coordinator
@@ -61,14 +60,16 @@ async def test_bekendmakingen_sensor_state_and_attributes(
 
     # Asserting the core state properties
     assert sensor.native_value == "Nieuw bestemmingsplan Centrum"
-    
+
     attrs = sensor.extra_state_attributes
     assert attrs is not None
     assert attrs["date"] == "2026-05-18"
     assert attrs["time"] == "15:30"
     assert attrs["link"] == "https://zoek.officielebekendmakingen.nl/rss?q=Kerkrade"
-    assert attrs["summary"] == "Gemeente Kerkrade maakt een nieuw bestemmingsplan bekend."
-    
+    assert (
+        attrs["summary"] == "Gemeente Kerkrade maakt een nieuw bestemmingsplan bekend."
+    )
+
     # Verify the history tracking arrays
     assert len(attrs["history"]) == 1
     assert attrs["history"][0]["title"] == "Omgevingsvergunning Hoofdstraat 12"
