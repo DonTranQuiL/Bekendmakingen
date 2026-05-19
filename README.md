@@ -1,23 +1,26 @@
-# Gemeente Bekendmakingen Integration for Home Assistant
+<div align="center">
 
+# 🌌 Gemeente bekendmakingen 2026
+**Deze integratie zorgt ervoor dat u op de hoogte bent van uw gemeente als er wijzingen / vergunningen worden aangevraagd door buurt bewoners.**
+</div>
 <p align="center">
   <!-- Release / License -->
-  <a href="https://github.com/DonTranQuiL/Bekendmakingen/releases">
-    <img src="https://img.shields.io/github/v/release/DonTranQuiL/Bekendmakingen?style=for-the-badge&color=007ec6" alt="Latest Release">
+  <a href="https://github.com/DonTranQuiL/bekendmakingen/releases">
+    <img src="https://img.shields.io/github/v/release/DonTranQuiL/bekendmakingen?style=for-the-badge&color=007ec6" alt="Latest Release">
   </a>
-  <a href="https://github.com/DonTranQuiL/Bekendmakingen/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/DonTranQuiL/Bekendmakingen?style=for-the-badge&color=007ec6" alt="License">
+  <a href="https://github.com/DonTranQuiL/bekendmakingen/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/DonTranQuiL/bekendmakingen?style=for-the-badge&color=007ec6" alt="License">
   </a>
 
   <!-- CI / Quality -->
-  <a href="https://github.com/DonTranQuiL/Bekendmakingen/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/Bekendmakingen/codechecker.yml?style=for-the-badge&label=CODE%20CHECKS&color=5dbb0f" alt="Code Checks">
+  <a href="https://github.com/DonTranQuiL/bekendmakingen/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/bekendmakingen/codechecker.yml?style=for-the-badge&label=CODE%20CHECKS&color=5dbb0f" alt="Code Checks">
   </a>
-  <a href="https://github.com/DonTranQuiL/Bekendmakingen/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/Bekendmakingen/pytest.yml?style=for-the-badge&label=TESTS&color=5dbb0f" alt="Tests">
+  <a href="https://github.com/DonTranQuiL/bekendmakingen/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/bekendmakingen/pytest.yml?style=for-the-badge&label=TESTS&color=5dbb0f" alt="Tests">
   </a>
-  <a href="https://github.com/DonTranQuiL/Bekendmakingen/actions">
-    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/Bekendmakingen/hacs.yaml?style=for-the-badge&label=HACS%20VALIDATION&color=5dbb0f" alt="HACS Validation">
+  <a href="https://github.com/DonTranQuiL/bekendmakingen/actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/DonTranQuiL/bekendmakingen/hacs.yaml?style=for-the-badge&label=HACS%20VALIDATION&color=5dbb0f" alt="HACS Validation">
   </a>
 
   <!-- Code Quality -->
@@ -27,9 +30,13 @@
   <a href="https://github.com/astral-sh/ruff">
     <img src="https://img.shields.io/badge/code%20style-ruff-000000?style=for-the-badge" alt="Ruff">
   </a>
-  <a href="https://codecov.io/gh/DonTranQuiL/Bekendmakingen">
-    <img src="https://img.shields.io/codecov/c/github/DonTranQuiL/Bekendmakingen?style=for-the-badge&color=5dbb0f&label=coverage" alt="Coverage">
-  </a>
+  <a href="https://codecov.io/gh/DonTranQuiL/bekendmakingen">
+  <img 
+    src="https://codecov.io/gh/DonTranQuiL/bekendmakingen/branch/main/graph/badge.svg"
+    alt="Coverage"
+    style="height:28px;"
+  >
+</a>
 
   <!-- Ecosystem -->
   <a href="https://hacs.xyz/">
@@ -50,6 +57,8 @@
     <img src="https://img.shields.io/badge/community-forum-007ec6?style=for-the-badge" alt="Community">
   </a>
 </p>
+
+</div>
 
 This custom component for Home Assistant allows you to monitor local government announcements, permits, and decisions for any Dutch municipality. It pulls data directly from the official [officielebekendmakingen.nl](https://zoek.officielebekendmakingen.nl/) RSS feed, keeping you informed about what is happening in your neighborhood.
 
