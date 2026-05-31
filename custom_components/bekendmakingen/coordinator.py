@@ -13,6 +13,7 @@ from .cache import BekendmakingenCache
 
 _LOGGER = logging.getLogger(__name__)
 
+
 class BekendmakingenCoordinator(DataUpdateCoordinator):
     def __init__(self, hass, config_entry):
         self.hass = hass
@@ -88,20 +89,20 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
         """Asynchronously fetch the detailed XML and parse the inner contents."""
         if not link.endswith(".html"):
             return "Geen extra details beschikbaar."
-            
+
         xml_link = link.replace(".html", ".xml")
-        
+
         try:
             async with session.get(xml_link) as response:
                 response.raise_for_status()
                 xml_text = await response.text()
-                
+
                 root = ET.fromstring(xml_text)
                 tekst_element = root.find(".//tekst")
-                
+
                 if tekst_element is None:
                     return "Geen detailtekst gevonden in de publicatie."
-                    
+
                 details = []
                 for child in tekst_element:
                     if child.tag == "al":
@@ -109,11 +110,14 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
                         # Stop gathering information when we hit the standard boilerplate footer
                         if "Waarom publiceert de gemeente dit bericht?" in text:
                             break
-                        
+
                         # Skip generic titles to keep the output clean
-                        if text and text.lower() not in ["aanvraag omgevingsvergunning", "verleende omgevingsvergunning"]:
+                        if text and text.lower() not in [
+                            "aanvraag omgevingsvergunning",
+                            "verleende omgevingsvergunning",
+                        ]:
                             details.append(text)
-                            
+
                     elif child.tag == "lijst":
                         for li in child.findall(".//li"):
                             li_text = "".join(li.itertext()).strip()
@@ -121,9 +125,9 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
                             li_text = " ".join(li_text.split())
                             if li_text:
                                 details.append(li_text)
-                                
+
                 return "\n".join(details).strip()
-                
+
         except Exception as err:
             _LOGGER.error("Failed to fetch XML details for %s: %s", xml_link, err)
             return "Fout bij ophalen van details."
@@ -184,13 +188,20 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
 
                 if announcements:
                     # Fire off concurrent requests to fetch the inner XML details for the top announcements
-                    tasks = [self._async_fetch_xml_details(session, ann["link"]) for ann in announcements]
-                    details_results = await asyncio.gather(*tasks, return_exceptions=True)
-                    
+                    tasks = [
+                        self._async_fetch_xml_details(session, ann["link"])
+                        for ann in announcements
+                    ]
+                    details_results = await asyncio.gather(
+                        *tasks, return_exceptions=True
+                    )
+
                     for i, ann in enumerate(announcements):
                         detail = details_results[i]
                         if isinstance(detail, Exception):
-                            ann["detailed_description"] = "Fout bij ophalen van details."
+                            ann["detailed_description"] = (
+                                "Fout bij ophalen van details."
+                            )
                         else:
                             ann["detailed_description"] = detail
 
