@@ -1,6 +1,7 @@
 import asyncio
 import os
 import urllib.parse
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import logging
 import feedparser
@@ -11,7 +12,6 @@ from .const import DOMAIN, CONF_MUNICIPALITY, CONF_FILTERS
 from .cache import BekendmakingenCache
 
 _LOGGER = logging.getLogger(__name__)
-
 
 class BekendmakingenCoordinator(DataUpdateCoordinator):
     def __init__(self, hass, config_entry):
@@ -25,7 +25,6 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
 
         self.cache = BekendmakingenCache(hass, self.municipality)
 
-        # FIX 1: Start met een lege lijst, de cache wordt via __init__.py op de achtergrond ingeladen
         self.last_data = []
         self.last_update_success_timestamp = None
         self.error_count = 0
@@ -85,6 +84,50 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
         except Exception as e:
             _LOGGER.error("Could not write debug file: %s", e)
 
+    async def _async_fetch_xml_details(self, session, link):
+        """Asynchronously fetch the detailed XML and parse the inner contents."""
+        if not link.endswith(".html"):
+            return "Geen extra details beschikbaar."
+            
+        xml_link = link.replace(".html", ".xml")
+        
+        try:
+            async with session.get(xml_link) as response:
+                response.raise_for_status()
+                xml_text = await response.text()
+                
+                root = ET.fromstring(xml_text)
+                tekst_element = root.find(".//tekst")
+                
+                if tekst_element is None:
+                    return "Geen detailtekst gevonden in de publicatie."
+                    
+                details = []
+                for child in tekst_element:
+                    if child.tag == "al":
+                        text = "".join(child.itertext()).strip()
+                        # Stop gathering information when we hit the standard boilerplate footer
+                        if "Waarom publiceert de gemeente dit bericht?" in text:
+                            break
+                        
+                        # Skip generic titles to keep the output clean
+                        if text and text.lower() not in ["aanvraag omgevingsvergunning", "verleende omgevingsvergunning"]:
+                            details.append(text)
+                            
+                    elif child.tag == "lijst":
+                        for li in child.findall(".//li"):
+                            li_text = "".join(li.itertext()).strip()
+                            # Clean up weird spacing or newline characters from the bullet points
+                            li_text = " ".join(li_text.split())
+                            if li_text:
+                                details.append(li_text)
+                                
+                return "\n".join(details).strip()
+                
+        except Exception as err:
+            _LOGGER.error("Failed to fetch XML details for %s: %s", xml_link, err)
+            return "Fout bij ophalen van details."
+
     async def _async_update_data(self):
         _LOGGER.debug("Fetching Bekendmakingen RSS for %s", self.municipality)
         try:
@@ -93,7 +136,6 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
                 response.raise_for_status()
                 xml = await response.text()
 
-                # FIX 2: Debug File Writer verplaatst naar de achtergrond (executor job)
                 current_dir = os.path.dirname(__file__)
                 debug_path = os.path.join(
                     current_dir, f"bekendmakingen_debug_{self.municipality}.txt"
@@ -141,8 +183,18 @@ class BekendmakingenCoordinator(DataUpdateCoordinator):
                         )
 
                 if announcements:
+                    # Fire off concurrent requests to fetch the inner XML details for the top announcements
+                    tasks = [self._async_fetch_xml_details(session, ann["link"]) for ann in announcements]
+                    details_results = await asyncio.gather(*tasks, return_exceptions=True)
+                    
+                    for i, ann in enumerate(announcements):
+                        detail = details_results[i]
+                        if isinstance(detail, Exception):
+                            ann["detailed_description"] = "Fout bij ophalen van details."
+                        else:
+                            ann["detailed_description"] = detail
+
                     self.last_data = announcements
-                    # FIX 3: Sla de cache op in de achtergrond
                     await self.hass.async_add_executor_job(
                         self.cache.save_cache, announcements
                     )
