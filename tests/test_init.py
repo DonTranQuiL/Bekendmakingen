@@ -1,7 +1,7 @@
 """Universal test for Home Assistant integrations."""
 
-import os
 import importlib
+import os
 import pkgutil
 
 
