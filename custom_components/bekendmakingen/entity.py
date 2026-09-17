@@ -3,7 +3,7 @@
 from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN, MANUFACTURER, CONF_INSTANCE_NAME
+from .const import CONF_INSTANCE_NAME, DOMAIN, MANUFACTURER
 from .coordinator import PlanviewerDataUpdateCoordinator
 
 

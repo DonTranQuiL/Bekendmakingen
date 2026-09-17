@@ -1,7 +1,8 @@
+import asyncio
 import logging
+
 import aiohttp
 import feedparser
-import asyncio
 
 _LOGGER = logging.getLogger(__name__)
 

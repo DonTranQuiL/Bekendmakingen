@@ -1,20 +1,20 @@
 """Config flow for Bekendmakingen integration."""
 
 import logging
-import voluptuous as vol
 
+import voluptuous as vol
 from homeassistant import config_entries
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import selector
 
 from .const import (
-    DOMAIN,
-    CONF_MUNICIPALITY,
+    CONF_FILTERS,
     CONF_INSTANCE_NAME,
+    CONF_MUNICIPALITY,
     CONF_SCAN_INTERVAL,
     DEFAULT_SCAN_INTERVAL,
-    CONF_FILTERS,
+    DOMAIN,
 )
 
 _LOGGER = logging.getLogger(__name__)
