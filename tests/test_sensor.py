@@ -1,6 +1,7 @@
 """Tests for the Bekendmakingen sensor platform."""
 
 from unittest.mock import MagicMock
+
 import pytest
 from homeassistant.core import HomeAssistant
 
@@ -8,8 +9,8 @@ from custom_components.bekendmakingen.const import (
     CONF_MUNICIPALITY,
 )
 from custom_components.bekendmakingen.sensor import (
-    BekendmakingenSensor,
     BekendmakingenDiagnosticSensor,
+    BekendmakingenSensor,
 )
 
 

@@ -1,15 +1,17 @@
 import asyncio
+import logging
 import os
 import urllib.parse
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
-import logging
+
 import feedparser
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from homeassistant.util import dt as dt_util
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from .const import DOMAIN, CONF_MUNICIPALITY, CONF_FILTERS
+
 from .cache import BekendmakingenCache
+from .const import CONF_FILTERS, CONF_MUNICIPALITY, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
