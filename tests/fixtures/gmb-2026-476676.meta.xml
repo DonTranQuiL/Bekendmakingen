@@ -1,0 +1,26 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM/2.98/xml/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Groningen" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="omgevingsvergunning" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Groningen" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Groningen" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Ruimte en infrastructuur | Organisatie en beleid" />
+  <metadata name="OVERHEIDop.activiteit" scheme="OVERHEIDop.ActiviteitOmgevingsvergunning" content="bouwen" />
+  <metadata name="OVERHEIDop.referentienummer" scheme="" content="GRN-00038131" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT (233724.837 582227.219)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Oude Ebbingestraat 54 a te Groningen" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="Kennisgeving verlenging beslistermijn aanvraag omgevingsvergunning (regulier), het uitvoeren van onderhoud en verduurzaming van een Rijksmonumental pand, Oude Ebbingestraat 54 a, 9712 HL Groningen" />
+  <metadata name="OVERHEIDop.datumEindeReactietermijn" scheme="" content="2026-11-20" />
+  <metadata name="OVERHEIDop.terinzageleggingBG" scheme="" content="https://groningen.lokalebekendmakingen.nl/case/1:9822:332008" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="476676" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-476676" />
+</metadata_gegevens>

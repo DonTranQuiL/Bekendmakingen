@@ -1,0 +1,25 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM/2.98/xml/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Kerkrade" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="omgevingsvergunning" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Kerkrade" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Kerkrade" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Ruimte en infrastructuur | Organisatie en beleid" />
+  <metadata name="OVERHEIDop.activiteit" scheme="OVERHEIDop.ActiviteitOmgevingsvergunning" content="bouwen" />
+  <metadata name="OVERHEIDop.referentienummer" scheme="" content="Rx.Mission zaak Z2026-00000697" />
+  <metadata name="DCTERMS.abstract" scheme="" content="Betreft:  Besluit op locatie Akerstraat 10, 6466HH Kerkrade" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Vlak">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POLYGON ((200059.75664293545 318641.96903560369, 200057.96769015471 318641.88508203416, 200058.04667645882 318635.59004772553, 200059.89968795542 318635.83009659708, 200059.9816943825 318635.83404009166, 200085.00976694058 318637.24716920732, 200083.44976962474 318640.58219964796, 200081.904728682 318643.89021504391, 200069.78270775545 318642.43910065934, 200059.75664293545 318641.96903560369))" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Akerstraat 10, 6466HH Kerkrade" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="Verleende omgevingsvergunning voor Akerstraat 10, 6466HH Kerkrade" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="478109" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-478109" />
+</metadata_gegevens>

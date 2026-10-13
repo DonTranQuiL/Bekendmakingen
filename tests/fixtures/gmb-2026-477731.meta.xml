@@ -1,0 +1,45 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-VB-Web-CB/6.57/xml/MC-DRP-VB-Web-CB.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="verkeersbesluit of -mededeling" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Verkeer | Organisatie en beleid" />
+  <metadata name="OVERHEIDvb.typeVerkeersbesluit" scheme="OVERHEIDvb.TypeVerkeersbesluit" content="plaatsing of verwijdering van verkeerstekens" />
+  <metadata name="OVERHEIDvb.vereisteVanBesluit" scheme="OVERHEIDvb.VereisteVanBesluit" content="Het bepaalde in artikel 12 van het BABW" />
+  <metadata name="OVERHEIDvb.vereisteVanBesluit" scheme="OVERHEIDvb.VereisteVanBesluit" content="Wegenverkeerswet 1994, art. 15, lid 1" />
+  <metadata name="DCTERMS.alternative" scheme="" content="Gemeente Utrecht - Intrekken: Parkeerverbod (bord E1 conform RVV 1990 met onderborden OB501L en R) - Cornelis Houtmanstraat (tegenover huisnummer 26 en 32E en ter hoogte van huisnummers 11 en 21; wegvak tussen Willem Barentszstraat en Karel Doormanlaan)&#x9;" />
+  <metadata name="OVERHEIDvb.wegcategorie" scheme="OVERHEIDvb.Wegcategorie" content="Erftoegangsweg binnen de bebouwde kom" />
+  <metadata name="OVERHEIDvb.weggebruiker" scheme="OVERHEIDvb.Weggebruiker" content="bestuurders van een gelede vrachtwagen" />
+  <metadata name="OVERHEIDvb.weggebruiker" scheme="OVERHEIDvb.Weggebruiker" content="bestuurders van een motorrijwiel, scooter, personenauto of bestelauto" />
+  <metadata name="OVERHEIDvb.weggebruiker" scheme="OVERHEIDvb.Weggebruiker" content="bestuurders van een ongelede vrachtwagen of ongelede autobus" />
+  <metadata name="OVERHEIDvb.referentienummer" scheme="" content="34279385" />
+  <metadata name="OVERHEIDop.verkeersbordcode" scheme="" content="E1" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT(138209.93735800913 456785.4880066454)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Punt 1" />
+  </metadata>
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT(138165.7833958633 456787.9056430804)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Punt 2" />
+  </metadata>
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT(138157.6643552673 456787.60904513695)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Punt 3" />
+  </metadata>
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT(138133.69674342067 456805.8379960298)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Punt 4" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="2026-10-11 Cornelis Houtmanstraat, Noordoost, Intrekken Parkeerverbod, Verkeersmaatregelen Gemeente Utrecht" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.externeBijlage" scheme="" content="bebordingsplan|exb-2026-35787" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="477731" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-477731" />
+</metadata_gegevens>

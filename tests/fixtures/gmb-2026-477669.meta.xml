@@ -1,0 +1,27 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM/2.98/xml/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="omgevingsvergunning" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Ruimte en infrastructuur | Organisatie en beleid" />
+  <metadata name="OVERHEIDop.activiteit" scheme="OVERHEIDop.ActiviteitOmgevingsvergunning" content="bouwen" />
+  <metadata name="OVERHEIDop.referentienummer" scheme="" content="Rx.Mission zaak GU-Z2026-0066119" />
+  <metadata name="DCTERMS.abstract" scheme="" content="Toelichting: het aanbrengen van doorbraken in dragende wanden" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Vlak">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POLYGON ((135445.58630667513 456131.9287405241, 135448.22930171344 456131.52672081237, 135451.9692323179 456130.97864838893, 135453.84829000925 456142.53867134254, 135454.16526634834 456144.81370163994, 135455.41230974541 456153.3836382578, 135455.81128461313 456156.10472314362, 135455.20226776521 456156.19367524708, 135452.58928329841 456156.57365518319, 135449.9762996611 456156.95374774328, 135449.40235045069 456157.03766735515, 135448.59230412985 456150.85566491238, 135448.46334345476 456149.48066001141, 135448.14931696671 456149.509708705, 135445.58630667513 456131.9287405241))" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Vleutenseweg 143, 3532HB Utrecht" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="Verleende Omgevingsvergunning, het aanbrengen van doorbraken in dragende wanden, Vleutenseweg 143, 3532HB Utrecht, GU-Z2026-0066119" />
+  <metadata name="OVERHEIDop.datumEindeReactietermijn" scheme="" content="2026-11-20" />
+  <metadata name="OVERHEIDop.terinzageleggingBG" scheme="" content="https://jeleefomgeving.nl/inzien/002220647/aa693ef6-6055-4bf7-98ac-456ad76eea5c" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="477669" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-477669" />
+</metadata_gegevens>

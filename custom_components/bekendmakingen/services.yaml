@@ -1,6 +1,2 @@
 refresh:
-  name: Refresh Bekendmakingen
-  description: Manually scrape the latest RSS feed.
 clear_files:
-  name: Clear Cache & Debug Logs
-  description: Deletes the local JSON cache files and debug text logs for all Bekendmakingen instances.

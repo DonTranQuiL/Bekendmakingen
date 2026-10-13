@@ -81,19 +81,22 @@ This integration was created with significant collaboration, testing, and debugg
 ***
 ## 🚀 Key Features
 
-* ✅ **L1/P2000-Style Persistence**: Includes a built-in JSON cache system. Your alerts are saved to disk and load **instantly** when Home Assistant reboots—no blank dashboard cards on startup.
-* ✅ **Advanced Keyword Filtering**: Built-in, on-the-fly UI filtering! Choose to see 'ALLES', or strictly filter for specific categories like Aanvragen, Verleend, Meldingen, or Geweigerd. 
-* ✅ **Master Sensor Approach**: A single master sensor displays the most recent announcement, while the previous 9 alerts are neatly stored in a `history` attribute.
-* ✅ **Diagnostic Tracking**: Includes dedicated diagnostic sensors for "Last Update Status", "Last Update Time", and "Consecutive Errors".
-* ✅ **Built-in Debugging**: Automatically generates a local `.txt` debug file in the integration folder so you can see exactly what the government server is returning.
-* ✅ **Service Calls**: Includes services to manually trigger a refresh or cleanly delete all local cache and debug files.
+* ✅ **Dashboard card included**: `custom:bekendmakingen-card` with a timeline, map, category counters, filters, search, `NIEUW` badges and a detail popup. It installs together with the integration — no extra resource needed.
+* ✅ **Location for every announcement**: coordinates and address come straight from the official publication metadata (`OVERHEIDop.geometrie` / `geometrieLabel`); when a record has none, the address is looked up via PDOK Locatieserver (cached). Distance to your Home zone is calculated.
+* ✅ **Smart details**: category, case number (kenmerk), objection/response deadline, full publication text and the "stukken inzien" link where available.
+* ✅ **Persistence**: built-in JSON cache, so your dashboard is filled **instantly** after a restart. Already-known announcements are not downloaded again.
+* ✅ **Filtering**: choose `ALLES` or only Aanvragen, Verleend, Geweigerd, Verkeersbesluiten, Meldingen or Overig.
+* ✅ **10–50 announcements**: configurable in the options.
+* ✅ **Counters**: `Nieuw vandaag` plus one sensor per category.
+* ✅ **Diagnostics**: Last Update Status, Last Update Time and Consecutive Errors.
+* ✅ **Services**: refresh now, or clear all cache and debug files.
 
 ## 🛠 Installation
 
 ### Method 1: HACS (Recommended)
 1. Open **HACS** -> **Integrations**.
 2. Click the 3-dots menu (top right) -> **Custom Repositories**.
-3. Paste URL: `https://github.com/Malosaaa/ha-bekendmakingen` | Category: **Integration**.
+3. Paste URL: `https://github.com/DonTranQuiL/Bekendmakingen` | Category: **Integration**.
 4. Click **Add**, then find "Bekendmakingen" and click **Download**.
 5. **Restart Home Assistant.**
 
@@ -106,67 +109,115 @@ This integration was created with significant collaboration, testing, and debugg
 
 1. Go to **Settings** -> **Devices & Services**.
 2. Click **+ Add Integration** and search for **Bekendmakingen**.
-3. **Municipality**: Enter the exact name of your municipality (e.g., `maastricht`).
+3. **Municipality**: Enter the name of your municipality (e.g., `maastricht`).
 4. **Instance Name**: Choose a friendly name for your device.
-5. **Filters**: Select which types of announcements you want to track. *Leave "ALLES" checked if you want no filters.* (You can change these later by clicking "Configure" on the integration page!)
-6. **Scan Interval**: Set how often to check for updates (3600 seconds / 1 hour recommended).
+5. **Filters**: Select which types of announcements you want to track. *Leave "ALLES" checked if you want no filters.*
+6. **Scan Interval**: How often to check for updates (3600 seconds / 1 hour recommended, minimum 300).
+7. **Number of announcements**: 10–50 (default 10).
+
+All options can be changed later via **Configure** on the integration page.
+
+## 🎨 Dashboard card
+
+![Bekendmakingen card demo](docs/card-demo.gif)
+
+![Bekendmakingen card (dark theme)](docs/card-dark.png)
+
+<details><summary>Light theme and detail popup</summary>
+
+![Bekendmakingen card (light theme)](docs/card-light.png)
+![Detail popup](docs/card-detail.png)
+
+</details>
+
+> **No manual resource needed.** The card ships with the integration at
+> [`custom_components/bekendmakingen/frontend/bekendmakingen-card.js`](custom_components/bekendmakingen/frontend/bekendmakingen-card.js)
+> and is registered automatically when Home Assistant starts (cache-busted per version).
+> Do **not** add it under *Dashboards → Resources*; if you added it there earlier, remove that entry.
+
+After installing and restarting you can simply add it:
+
+**Edit dashboard → + Add card → search "Bekendmakingen"**, or in YAML:
+
+```yaml
+type: custom:bekendmakingen-card
+entity: sensor.bekendmakingen_utrecht
+```
+
+What you get:
+
+* **Header** with the municipality, update status (green/red) and a refresh button.
+* **Category counters** (Aanvragen, Verleend, Geweigerd, Verkeer, Meldingen, Overig) — tap one to filter.
+* **Period filter** (Alles / Vandaag / 7 dagen / 30 dagen) and **search** on street, postcode or kenmerk.
+* **Map**: the Home Assistant map with a coloured pin per announcement, or a compact "radar" around your home (`map_style: radar`).
+* **Timeline** grouped by *Vandaag*, *Gisteren*, *Deze week* and *Eerder*, with address, distance and deadline countdown.
+* **NIEUW badges** for announcements you have not opened yet (remembered per browser); tap the red badge to mark all as read.
+* **Detail popup** with the full text, deadline countdown, kenmerk, and buttons to open the publication, the documents and a map.
+* Follows your Home Assistant theme (light and dark). Visual editor included.
+
+| Option | Default | Description |
+| :--- | :--- | :--- |
+| `entity` | – | The main Bekendmakingen sensor (required). |
+| `title` | `Bekendmakingen <gemeente>` | Card title. |
+| `show_map` | `true` | Show the map. |
+| `map_style` | `auto` | `auto` (Home Assistant map) or `radar`. |
+| `show_counters` | `true` | Category counters. |
+| `show_search` | `true` | Search field. |
+| `categories` | all | Default category filter, e.g. `[aanvragen, verleend]`. |
+| `max_items` | `25` | Maximum rows in the list. |
+| `new_hours` | `24` | How long an unopened announcement counts as new. |
+| `max_distance_km` | `0` | Hide announcements further away (0 = show all). |
+| `compact` | `false` | Smaller rows, no map. |
 
 ## 📊 Sensors & Attributes
 
-### Master Sensor
-`sensor.bekendmakingen_<municipality>`
+### Main sensor
+`sensor.bekendmakingen_<municipality>` — state is the newest announcement's title.
 
 | Attribute | Content |
 | :--- | :--- |
-| `date` | The official publication date (e.g., 2026-03-05). |
-| `time` | The official publication time. |
-| `link` | The direct URL to the full permit/announcement on the government website. |
-| `summary` | A brief text description of the permit or decision. |
-| `history` | A list of the 9 previous announcements, complete with their own dates, times, links, and summaries. |
+| `date`, `time` | Publication date and time of the newest announcement. |
+| `link` | URL of the publication on officielebekendmakingen.nl. |
+| `summary` | Short description. |
+| `detailed_description` | The full publication text. |
+| `history` | The other announcements (same fields as below). |
+| `items` | **All** announcements, newest first (v2.1). |
+| `category`, `address`, `latitude`, `longitude`, `published`, `id`, `municipality` | Details of the newest announcement (v2.1). |
+
+Each entry in `items` / `history` contains: `id`, `title`, `link`, `published` (ISO 8601), `date`, `time`, `category`, `rubriek`, `summary`, `detailed_description`, `address`, `postcode`, `latitude`, `longitude`, `geo_source` (`metadata` or `pdok`), `distance_km`, `case_number`, `deadline` (ISO date), `inzage_url`.
+
+`items`, `history`, `summary` and `detailed_description` are not stored in the recorder database.
+
+### Counters
+`sensor.bekendmakingen_<municipality>_nieuw_vandaag` and one sensor per category (`…_aanvragen`, `…_verleend`, `…_geweigerd`, `…_verkeer`, `…_meldingen`, `…_overig`).
+
+### Diagnostics
+Last Update Status, Last Update Time, Consecutive Errors.
 
 ## 🛠 Services
 
 | Service | Description |
 | :--- | :--- |
-| `bekendmakingen.refresh` | Forces an immediate check of the RSS feed. |
-| `bekendmakingen.clear_files` | Deletes the local `.json` cache file and the `.txt` debug logs for all configured municipalities. |
+| `bekendmakingen.refresh` | Forces an immediate check of the feed. |
+| `bekendmakingen.clear_files` | Deletes the local `.json` cache, the geocode cache and the `.txt` debug logs. |
 
+A raw debug file (`bekendmakingen_debug_<municipality>.txt`) is only written when debug logging is enabled for `custom_components.bekendmakingen`.
 
-## 🎨 Recommended Dashboard (Markdown)
+## 📝 Markdown alternative
 
-To get a beautifully formatted list of all your alerts with clickable links, use the standard **Markdown Card** built right into Home Assistant. 
-
-*Note: Replace `maastricht` in the entity ID below with your actual municipality name.*
+Prefer a plain Markdown card? This still works (replace `maastricht` with your municipality):
 
 ```yaml
 type: markdown
 content: |2-
 
     {% set entity = 'sensor.bekendmakingen_maastricht' %}
-    
-    ## 🏛️ Gemeente maastricht Bekendmakingen
-    
-    {% if states(entity) not in ['unknown', 'unavailable', 'Geen bekendmakingen'] %}
-    **{{ state_attr(entity, 'date') }} ({{ state_attr(entity, 'time') }})** [**{{ states(entity) }}**]({{ state_attr(entity, 'link') }})  
-    *{{ state_attr(entity, 'summary') | striptags | truncate(150, true, '...') }}*
-    
-    ---
-    
-    {% if state_attr(entity, 'history') %}
-    {% for item in state_attr(entity, 'history') %}
-    **{{ item.date }} ({{ item.time }})** [**{{ item.title }}**]({{ item.link }})  
+    {% for item in state_attr(entity, 'items') or [] %}
+    **{{ item.date }}** [**{{ item.title }}**]({{ item.link }})
     *{{ item.summary | striptags | truncate(150, true, '...') }}*
-    
+
     ---
     {% endfor %}
-    {% endif %}
-    {% else %}
-    Geen bekendmakingen gevonden in de huidige feed.
-    {% endif %}
-grid_options:
-  rows: 8
-  columns: 48
-
 ```
 [hacs]: https://hacs.xyz
 [hacs_badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
