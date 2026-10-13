@@ -36,6 +36,8 @@ jobs:
           mv "$tmp" custom_components/${{ env.DOMAIN }}/manifest.json
 
       - name: Commit and Push Changes
+        # Prereleases are often cut from a feature branch: never push those to main.
+        if: ${{ !github.event.release.prerelease }}
         uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "Bump manifest version to ${{ github.ref_name }} [skip ci]"
