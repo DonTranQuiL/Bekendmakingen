@@ -1,19 +1,23 @@
 {
   "domain": "bekendmakingen",
   "name": "Bekendmakingen",
-  "after_dependencies": [],
+  "after_dependencies": [
+    "frontend"
+  ],
   "codeowners": [
-    "@malosaaa"
+    "@DonTranQuiL"
   ],
   "config_flow": true,
-  "dependencies": [],
-  "documentation": "https://github.com/Malosaaa/bekendmakingen",
+  "dependencies": [
+    "http"
+  ],
+  "documentation": "https://github.com/DonTranQuiL/Bekendmakingen",
   "integration_type": "service",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/Malosaaa/bekendmakingen/issues",
+  "issue_tracker": "https://github.com/DonTranQuiL/Bekendmakingen/issues",
   "quality_scale": "bronze",
   "requirements": [
     "feedparser>=6.0.12"
   ],
-  "version": "2.0.0"
+  "version": "2.1.0b0"
 }

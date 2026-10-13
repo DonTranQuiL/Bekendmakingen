@@ -1,3 +1,5 @@
+"""Small JSON cache so the dashboard is filled instantly after a restart."""
+
 import json
 import logging
 import os
@@ -11,7 +13,7 @@ class BekendmakingenCache:
 
     def save_cache(self, data):
         try:
-            with open(self.cache_path, "w") as f:
+            with open(self.cache_path, "w", encoding="utf-8") as f:
                 json.dump(data, f)
         except Exception as e:
             _LOGGER.error("Error saving bekendmakingen cache: %s", e)
@@ -20,17 +22,17 @@ class BekendmakingenCache:
         if not os.path.exists(self.cache_path):
             return []
         try:
-            with open(self.cache_path, "r") as f:
-                return json.load(f)
+            with open(self.cache_path, encoding="utf-8") as f:
+                data = json.load(f)
+            return data if isinstance(data, list) else []
         except Exception as e:
             _LOGGER.error("Error loading bekendmakingen cache: %s", e)
             return []
 
     def clear_cache(self):
-        """Deletes the JSON cache file if it exists."""
+        """Delete the JSON cache file if it exists."""
         if os.path.exists(self.cache_path):
             try:
                 os.remove(self.cache_path)
-                _LOGGER.debug("Deleted cache file: %s", self.cache_path)
             except Exception as e:
                 _LOGGER.error("Error deleting cache file: %s", e)

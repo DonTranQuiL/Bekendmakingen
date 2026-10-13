@@ -1,0 +1,27 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM/2.98/xml/MC-DRP-OmgevingsvergunningAfhandeling-3Pas-ZM.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="omgevingsvergunning" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Ruimte en infrastructuur | Organisatie en beleid" />
+  <metadata name="OVERHEIDop.activiteit" scheme="OVERHEIDop.ActiviteitOmgevingsvergunning" content="bouwen" />
+  <metadata name="OVERHEIDop.referentienummer" scheme="" content="Rx.Mission zaak GU-Z2026-0067421" />
+  <metadata name="DCTERMS.abstract" scheme="" content="Toelichting: het plaatsen van een dakkapel op het voor- en achterdakvlak van een woning" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Vlak">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POLYGON ((131454.06678371265 456448.82966178743, 131457.41881005446 456442.77467261674, 131461.551780792 456445.10962384776, 131473.567806746 456451.89556665317, 131470.16581188806 456457.92163086531, 131466.68182013085 456455.95354576816, 131460.36183580657 456452.38459369959, 131458.14876731337 456451.1355898375, 131456.37282555061 456450.13263053779, 131455.31977798286 456449.5376942092, 131454.06678371265 456448.82966178743))" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Van der Vlugtsingel 7, 3544LA Utrecht" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="Verleende Omgevingsvergunning, het plaatsen van een dakkapel op het voor- en achterdakvlak van een woning, Van der Vlugtsingel 7, 3544LA Utrecht, GU-Z2026-0067421" />
+  <metadata name="OVERHEIDop.datumEindeReactietermijn" scheme="" content="2026-11-20" />
+  <metadata name="OVERHEIDop.terinzageleggingBG" scheme="" content="https://jeleefomgeving.nl/inzien/002220647/a2f2a427-8cb8-4f57-ad84-c0d4c3dcabe9" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="477883" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-477883" />
+</metadata_gegevens>

@@ -1,0 +1,30 @@
+<metadata_gegevens>
+  <metadata name="OVERHEID.organisationType" scheme="OVERHEID.Organisatietype" content="gemeente" />
+  <metadata name="OVERHEIDop.publicationName" scheme="" content="Gemeenteblad" />
+  <metadata name="OVERHEIDop.doctype" scheme="" content="Officiële Publicaties, versie 1.1" />
+  <metadata name="OVERHEIDop.configuratie" scheme="" content="https://repository.officiele-overheidspublicaties.nl/MasterConfiguraties/MC-DRP-VB-Web-CB/6.57/xml/MC-DRP-VB-Web-CB.xml" />
+  <metadata name="DC.creator" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.authority" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="DC.type" scheme="OVERHEID.Informatietype" content="officiële publicatie" />
+  <metadata name="DC.type" scheme="OVERHEIDop.Rubriek" content="verkeersbesluit of -mededeling" />
+  <metadata name="DCTERMS.publisher" scheme="OVERHEID.Gemeente" content="Utrecht" />
+  <metadata name="OVERHEID.category" scheme="OVERHEID.TaxonomieBeleidsagendaDecentraal" content="Verkeer | Organisatie en beleid" />
+  <metadata name="OVERHEIDvb.typeVerkeersbesluit" scheme="OVERHEIDvb.TypeVerkeersbesluit" content="plaatsing of verwijdering van verkeerstekens" />
+  <metadata name="OVERHEIDvb.vereisteVanBesluit" scheme="OVERHEIDvb.VereisteVanBesluit" content="Het bepaalde in artikel 12 van het BABW" />
+  <metadata name="OVERHEIDvb.vereisteVanBesluit" scheme="OVERHEIDvb.VereisteVanBesluit" content="Wegenverkeerswet 1994, art. 15, lid 1" />
+  <metadata name="DCTERMS.alternative" scheme="" content="Gemeente Utrecht - Vaststellen: Parkeergelegenheid alleen bestemd voor het opladen van elektrische voertuigen (1 plek) (bord E8c, volgens bijlage I van het RVV 1990 met onderbord OB504r) - Paul Citroenstraat (ter hoogte van huisnummer 53; wegvak tussen Theo van Doesburgstraat en Eschersingel)" />
+  <metadata name="OVERHEIDvb.wegcategorie" scheme="OVERHEIDvb.Wegcategorie" content="Erftoegangsweg binnen de bebouwde kom" />
+  <metadata name="OVERHEIDvb.weggebruiker" scheme="OVERHEIDvb.Weggebruiker" content="bestuurders van een motorrijwiel, scooter, personenauto of bestelauto" />
+  <metadata name="OVERHEIDvb.referentienummer" scheme="" content="34293646" />
+  <metadata name="OVERHEIDop.verkeersbordcode" scheme="" content="E8c" />
+  <metadata name="DCTERMS.language" scheme="DCTERMS.RFC4646" content="nl" />
+  <metadata name="OVERHEIDop.gebiedsmarkering" scheme="OVERHEIDop.locatietype" content="Punt">
+    <metadata name="OVERHEIDop.geometrie" scheme="" content="POINT(131191.09807048267 456570.67787535687)" />
+    <metadata name="OVERHEIDop.geometrieLabel" scheme="" content="Punt 1" />
+  </metadata>
+  <metadata name="DC.title" scheme="" content="2026-10-11 Paul Citroenstraat, Leidsche Rijn, Elektrische oplaadpaal, Verkeersmaatregelen Gemeente Utrecht" />
+  <metadata name="DCTERMS.available" scheme="DCTERMS.W3CDTF" content="2026-10-13" />
+  <metadata name="OVERHEIDop.jaargang" scheme="DCTERMS.W3CDTF" content="2026" />
+  <metadata name="OVERHEIDop.publicationIssue" scheme="" content="477160" />
+  <metadata name="DC.identifier" scheme="OVERHEIDop.GmbID" content="gmb-2026-477160" />
+</metadata_gegevens>

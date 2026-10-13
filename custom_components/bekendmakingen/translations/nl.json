@@ -1,0 +1,50 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bekendmakingen",
+        "description": "Officiële gemeentelijke bekendmakingen (Gemeenteblad) voor één gemeente.",
+        "data": {
+          "municipality": "Gemeente",
+          "instance_name": "Naam",
+          "filters": "Categorieën",
+          "scan_interval": "Update-interval (seconden)",
+          "max_items": "Aantal bekendmakingen"
+        }
+      }
+    },
+    "error": {
+      "required": "Dit veld is verplicht.",
+      "invalid_scan_interval": "Het interval moet minimaal 300 seconden zijn.",
+      "invalid_municipality": "Onbekende gemeente."
+    },
+    "abort": {
+      "already_configured": "Deze gemeente is al ingesteld."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bekendmakingen opties",
+        "data": {
+          "filters": "Categorieën",
+          "scan_interval": "Update-interval (seconden)",
+          "max_items": "Aantal bekendmakingen"
+        }
+      }
+    },
+    "error": {
+      "invalid_scan_interval": "Het interval moet minimaal 300 seconden zijn."
+    }
+  },
+  "services": {
+    "refresh": {
+      "name": "Bekendmakingen verversen",
+      "description": "Haal nu de nieuwste bekendmakingen op."
+    },
+    "clear_files": {
+      "name": "Cache & debuglogs wissen",
+      "description": "Verwijdert de lokale JSON-cache, geocode-cache en debuglogs van alle Bekendmakingen-instanties."
+    }
+  }
+}

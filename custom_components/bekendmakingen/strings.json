@@ -1,0 +1,50 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Bekendmakingen",
+        "description": "Official municipal announcements (Gemeenteblad) for one municipality.",
+        "data": {
+          "municipality": "Municipality",
+          "instance_name": "Instance name",
+          "filters": "Categories",
+          "scan_interval": "Scan interval (seconds)",
+          "max_items": "Number of announcements"
+        }
+      }
+    },
+    "error": {
+      "required": "This field is required.",
+      "invalid_scan_interval": "The scan interval must be at least 300 seconds.",
+      "invalid_municipality": "Unknown municipality."
+    },
+    "abort": {
+      "already_configured": "This municipality is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Bekendmakingen options",
+        "data": {
+          "filters": "Categories",
+          "scan_interval": "Scan interval (seconds)",
+          "max_items": "Number of announcements"
+        }
+      }
+    },
+    "error": {
+      "invalid_scan_interval": "The scan interval must be at least 300 seconds."
+    }
+  },
+  "services": {
+    "refresh": {
+      "name": "Refresh Bekendmakingen",
+      "description": "Fetch the latest announcements now."
+    },
+    "clear_files": {
+      "name": "Clear cache & debug logs",
+      "description": "Deletes the local JSON cache, geocode cache and debug logs for all Bekendmakingen instances."
+    }
+  }
+}

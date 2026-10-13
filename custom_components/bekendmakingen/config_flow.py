@@ -11,15 +11,31 @@ from homeassistant.helpers import selector
 from .const import (
     CONF_FILTERS,
     CONF_INSTANCE_NAME,
+    CONF_MAX_ITEMS,
     CONF_MUNICIPALITY,
     CONF_SCAN_INTERVAL,
+    DEFAULT_MAX_ITEMS,
     DEFAULT_SCAN_INTERVAL,
     DOMAIN,
+    MAX_MAX_ITEMS,
+    MIN_MAX_ITEMS,
 )
 
 _LOGGER = logging.getLogger(__name__)
 
 MIN_SCAN_INTERVAL_SECONDS = 300
+
+MAX_ITEMS_SELECTOR = vol.All(
+    selector.NumberSelector(
+        selector.NumberSelectorConfig(
+            min=MIN_MAX_ITEMS,
+            max=MAX_MAX_ITEMS,
+            step=5,
+            mode=selector.NumberSelectorMode.SLIDER,
+        )
+    ),
+    vol.Coerce(int),
+)
 
 FILTER_SELECTOR = selector.SelectSelector(
     selector.SelectSelectorConfig(
@@ -29,6 +45,7 @@ FILTER_SELECTOR = selector.SelectSelector(
             {"value": "verleend", "label": "Vergunning verleend"},
             {"value": "meldingen", "label": "Meldingen"},
             {"value": "geweigerd", "label": "Geweigerd"},
+            {"value": "verkeer", "label": "Verkeersbesluiten"},
             {"value": "overig", "label": "Overige nieuws"},
         ],
         multiple=True,
@@ -81,6 +98,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         options={
                             CONF_SCAN_INTERVAL: scan_interval,
                             CONF_FILTERS: filters,
+                            CONF_MAX_ITEMS: int(
+                                user_input.get(CONF_MAX_ITEMS, DEFAULT_MAX_ITEMS)
+                            ),
                         },
                     )
                 else:
@@ -92,6 +112,9 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Required(CONF_INSTANCE_NAME): str,
                 vol.Optional(CONF_FILTERS, default=["alles"]): FILTER_SELECTOR,
                 vol.Optional(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): int,
+                vol.Optional(
+                    CONF_MAX_ITEMS, default=DEFAULT_MAX_ITEMS
+                ): MAX_ITEMS_SELECTOR,
             }
         )
         return self.async_show_form(
@@ -106,46 +129,36 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    # FIX: __init__ completely removed so Home Assistant can inject it safely
+    """Filters, scan interval and number of items."""
 
-    async def async_step_init(self, user_input=None) -> FlowResult:
-        if user_input is not None:
-            scan_interval = user_input.get(CONF_SCAN_INTERVAL)
-            if not validate_scan_interval(scan_interval):
-                return self.async_show_form(
-                    step_id="init",
-                    data_schema=vol.Schema(
-                        {
-                            vol.Optional(
-                                CONF_FILTERS,
-                                default=self.config_entry.options.get(
-                                    CONF_FILTERS, ["alles"]
-                                ),
-                            ): FILTER_SELECTOR,
-                            vol.Optional(
-                                CONF_SCAN_INTERVAL,
-                                default=self.config_entry.options.get(
-                                    CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL
-                                ),
-                            ): int,
-                        }
-                    ),
-                    errors={CONF_SCAN_INTERVAL: "invalid_scan_interval"},
-                )
-            return self.async_create_entry(title="", data=user_input)
-
-        options_schema = vol.Schema(
+    def _schema(self) -> vol.Schema:
+        opts = self.config_entry.options
+        return vol.Schema(
             {
                 vol.Optional(
-                    CONF_FILTERS,
-                    default=self.config_entry.options.get(CONF_FILTERS, ["alles"]),
+                    CONF_FILTERS, default=opts.get(CONF_FILTERS, ["alles"])
                 ): FILTER_SELECTOR,
                 vol.Optional(
                     CONF_SCAN_INTERVAL,
-                    default=self.config_entry.options.get(
-                        CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL
-                    ),
+                    default=opts.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL),
                 ): int,
+                vol.Optional(
+                    CONF_MAX_ITEMS,
+                    default=opts.get(CONF_MAX_ITEMS, DEFAULT_MAX_ITEMS),
+                ): MAX_ITEMS_SELECTOR,
             }
         )
-        return self.async_show_form(step_id="init", data_schema=options_schema)
+
+    async def async_step_init(self, user_input=None) -> FlowResult:
+        errors = {}
+        if user_input is not None:
+            if not validate_scan_interval(user_input.get(CONF_SCAN_INTERVAL, 0)):
+                errors[CONF_SCAN_INTERVAL] = "invalid_scan_interval"
+            else:
+                user_input[CONF_MAX_ITEMS] = int(
+                    user_input.get(CONF_MAX_ITEMS, DEFAULT_MAX_ITEMS)
+                )
+                return self.async_create_entry(title="", data=user_input)
+        return self.async_show_form(
+            step_id="init", data_schema=self._schema(), errors=errors
+        )
