@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import logging
 import os
 import re
 
@@ -20,7 +21,6 @@ from custom_components.bekendmakingen.const import (
     PDOK_URL,
 )
 from custom_components.bekendmakingen.coordinator import (
-    BekendmakingenCoordinator,
     municipality_name,
 )
 
@@ -63,10 +63,22 @@ def _cache_dir(hass: HomeAssistant, tmp_path):
     hass.config.config_dir = str(tmp_path)
 
 
+DEBUG_FILE = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "custom_components",
+    DOMAIN,
+    "bekendmakingen_debug_utrecht.txt",
+)
+
+
 async def test_setup_items_sensors_and_counts(
     hass: HomeAssistant, aioclient_mock, freezer
 ) -> None:
     freezer.move_to("2026-10-13 12:00:00+02:00")
+    logging.getLogger(f"custom_components.{DOMAIN}.coordinator").setLevel(logging.INFO)
+    if os.path.exists(DEBUG_FILE):
+        os.remove(DEBUG_FILE)
     mock_feed(aioclient_mock)
     entry = await setup_entry(hass)
 
@@ -117,12 +129,23 @@ async def test_setup_items_sensors_and_counts(
     } <= BekendmakingenSensor._unrecorded_attributes
 
     # No debug file without debug logging; cache file written.
-    comp = os.path.dirname(BekendmakingenCoordinator.__module__.replace(".", "/"))
-    assert not any(
-        f.startswith("bekendmakingen_debug")
-        for f in os.listdir(os.path.join(os.getcwd(), comp))
-    )
+    assert not os.path.exists(DEBUG_FILE)
     assert os.path.exists(hass.config.path(".bekendmakingen_utrecht.json"))
+
+
+async def test_debug_file_only_with_debug_logging(
+    hass: HomeAssistant, aioclient_mock
+) -> None:
+    logger = logging.getLogger(f"custom_components.{DOMAIN}.coordinator")
+    logger.setLevel(logging.DEBUG)
+    try:
+        mock_feed(aioclient_mock)
+        await setup_entry(hass)
+        assert os.path.exists(DEBUG_FILE)
+        await hass.services.async_call(DOMAIN, "clear_files", {}, blocking=True)
+        assert not os.path.exists(DEBUG_FILE)
+    finally:
+        logger.setLevel(logging.NOTSET)
 
 
 async def test_second_refresh_reuses_items(hass: HomeAssistant, aioclient_mock) -> None:
