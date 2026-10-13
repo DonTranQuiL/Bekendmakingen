@@ -2,7 +2,7 @@
 
 DOMAIN = "bekendmakingen"
 MANUFACTURER = "Overheid.nl"
-VERSION = "2.1.0b0"
+VERSION = "2.1.0"
 DEFAULT_SCAN_INTERVAL = 3600
 
 CONF_MUNICIPALITY = "municipality"

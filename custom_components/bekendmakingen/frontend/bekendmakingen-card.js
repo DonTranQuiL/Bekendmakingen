@@ -4,7 +4,7 @@
  *   type: custom:bekendmakingen-card
  *   entity: sensor.bekendmakingen_utrecht
  */
-const CARD_VERSION = "2.1.0b0";
+const CARD_VERSION = "2.1.0";
 
 const CATS = {
   aanvragen: { label: "Aanvragen", color: "#3b82f6", icon: "M6 2h9l5 5v15H6zM14 3v5h5M9 13h8M9 17h6" },

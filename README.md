@@ -81,7 +81,7 @@ This integration was created with significant collaboration, testing, and debugg
 ***
 ## 🚀 Key Features
 
-* ✅ **Dashboard card included (v2.1, beta)**: `custom:bekendmakingen-card` with a timeline, map, category counters, filters, search, `NIEUW` badges and a detail popup. It installs together with the integration — no extra resource needed.
+* ✅ **Dashboard card included**: `custom:bekendmakingen-card` with a timeline, map, category counters, filters, search, `NIEUW` badges and a detail popup. It installs together with the integration — no extra resource needed.
 * ✅ **Location for every announcement**: coordinates and address come straight from the official publication metadata (`OVERHEIDop.geometrie` / `geometrieLabel`); when a record has none, the address is looked up via PDOK Locatieserver (cached). Distance to your Home zone is calculated.
 * ✅ **Smart details**: category, case number (kenmerk), objection/response deadline, full publication text and the "stukken inzien" link where available.
 * ✅ **Persistence**: built-in JSON cache, so your dashboard is filled **instantly** after a restart. Already-known announcements are not downloaded again.
@@ -97,7 +97,7 @@ This integration was created with significant collaboration, testing, and debugg
 1. Open **HACS** -> **Integrations**.
 2. Click the 3-dots menu (top right) -> **Custom Repositories**.
 3. Paste URL: `https://github.com/DonTranQuiL/Bekendmakingen` | Category: **Integration**.
-4. Click **Add**, then find "Bekendmakingen" and click **Download**. (For the v2.1 beta, enable *Show beta versions* on the repository in HACS.)
+4. Click **Add**, then find "Bekendmakingen" and click **Download**.
 5. **Restart Home Assistant.**
 
 ### Method 2: Manual
@@ -119,6 +119,8 @@ All options can be changed later via **Configure** on the integration page.
 
 ## 🎨 Dashboard card
 
+![Bekendmakingen card demo](docs/card-demo.gif)
+
 ![Bekendmakingen card (dark theme)](docs/card-dark.png)
 
 <details><summary>Light theme and detail popup</summary>
@@ -128,7 +130,12 @@ All options can be changed later via **Configure** on the integration page.
 
 </details>
 
-The card is served by the integration itself and registered automatically, so after installing and restarting you can simply add it:
+> **No manual resource needed.** The card ships with the integration at
+> [`custom_components/bekendmakingen/frontend/bekendmakingen-card.js`](custom_components/bekendmakingen/frontend/bekendmakingen-card.js)
+> and is registered automatically when Home Assistant starts (cache-busted per version).
+> Do **not** add it under *Dashboards → Resources*; if you added it there earlier, remove that entry.
+
+After installing and restarting you can simply add it:
 
 **Edit dashboard → + Add card → search "Bekendmakingen"**, or in YAML:
 
