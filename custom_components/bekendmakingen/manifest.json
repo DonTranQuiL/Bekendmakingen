@@ -4,6 +4,10 @@
   "after_dependencies": [
     "frontend"
   ],
+  "categories": [
+    "local_services",
+    "news_social_media"
+  ],
   "codeowners": [
     "@DonTranQuiL"
   ],
