@@ -40,7 +40,7 @@
 
   <!-- Ecosystem -->
   <a href="https://hacs.xyz/">
-    <img src="https://img.shields.io/badge/HACS-CUSTOM-ff6e27?style=for-the-badge" alt="HACS">
+    <img src="https://img.shields.io/badge/HACS-DEFAULT-ff6e27?style=for-the-badge" alt="HACS">
   </a>
   <a href="https://www.home-assistant.io/">
     <img src="https://img.shields.io/badge/Home%20Assistant-2024.5%2B-007ec6?style=for-the-badge" alt="Home Assistant">
@@ -94,11 +94,18 @@ This integration was created with significant collaboration, testing, and debugg
 ## 🛠 Installation
 
 ### Method 1: HACS (Recommended)
-1. Open **HACS** -> **Integrations**.
-2. Click the 3-dots menu (top right) -> **Custom Repositories**.
-3. Paste URL: `https://github.com/DonTranQuiL/Bekendmakingen` | Category: **Integration**.
-4. Click **Add**, then find "Bekendmakingen" and click **Download**.
-5. **Restart Home Assistant.**
+Bekendmakingen is in the **HACS default list**, so no custom repository is needed:
+
+1. Open **HACS** and search for **Bekendmakingen**.
+2. Click **Download**.
+3. **Restart Home Assistant.**
+
+<details>
+<summary>Fallback: add as a custom repository</summary>
+
+If Bekendmakingen does not show up in the HACS search yet, click the 3-dots menu (top right) in HACS -> **Custom repositories**, paste `https://github.com/DonTranQuiL/Bekendmakingen` with category **Integration**, click **Add**, then continue with step 2.
+
+</details>
 
 ### Method 2: Manual
 1. Download the `bekendmakingen` folder from this repo.
@@ -220,5 +227,5 @@ content: |2-
     {% endfor %}
 ```
 [hacs]: https://hacs.xyz
-[hacs_badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=for-the-badge
+[hacs_badge]: https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge
 [maintenance_badge]: https://img.shields.io/badge/Maintained%3F-yes-green.svg?style=for-the-badge
